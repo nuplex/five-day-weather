@@ -1,0 +1,17 @@
+/**
+ CSS that does not belong to any specific component, affects global tags, or is shared between more than one
+ component.
+ */
+
+::after,
+::before {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    color: #333;
+    overflow-x: hidden;
+}
