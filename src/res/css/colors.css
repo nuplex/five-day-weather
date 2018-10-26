@@ -1,0 +1,26 @@
+/**
+ Colors used throughout the app
+*/
+
+:root {
+    /** GRAYSCALE **/
+    --white: #FFF;
+    --white-bg: #FAFAFA;
+    --gray-lighter: #F2F2F2;
+    --gray-light: #DFDFDF;
+    --gray: #888;
+    --gray-dark: #474647;
+    --black: #333;
+    --black-true: #000;
+
+    /** COLOR **/
+    --blue-lighter: #B3C8FF;
+    --blue-light: #668FFF;
+    --blue: #3369FF;
+    --blue-dark: #3064f2;
+    --blue-darker: #244AB3;
+
+    --yellow: #EFC654;
+
+    --red: #FF5964;
+}

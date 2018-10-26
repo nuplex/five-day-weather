@@ -1,0 +1,13 @@
+.error-text h1{
+    margin: 0;
+    font-size: var(--font-size-xxl);
+    line-height: var(--line-height-xxl);
+    color: var(--red);
+}
+
+.error-text p{
+    margin: 8px 0;
+    font-size: var(--font-size-lg);
+    line-height: var(--font-size-lg);
+    color: var(--red);
+}

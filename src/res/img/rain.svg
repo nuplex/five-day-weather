@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="512px"
+	 height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+<g id="Layer_2">
+	<g>
+		<ellipse fill="#ADADAD" cx="157.312" cy="256.263" rx="55.78" ry="53.766"/>
+		<ellipse fill="#ADADAD" cx="355.312" cy="256.263" rx="55.78" ry="53.766"/>
+		<rect x="157" y="202" fill="#ADADAD" width="198" height="108"/>
+	</g>
+	<g>
+		<ellipse fill="#ADADAD" cx="225.312" cy="199.263" rx="55.78" ry="53.766"/>
+		<ellipse fill="#ADADAD" cx="423.312" cy="199.263" rx="55.78" ry="53.766"/>
+		<rect x="225" y="145" fill="#ADADAD" width="198" height="108"/>
+	</g>
+</g>
+<g id="Layer_3">
+	<g>
+		<ellipse fill="#E6E6E6" cx="94.312" cy="322.263" rx="55.78" ry="53.766"/>
+		<ellipse fill="#E6E6E6" cx="292.312" cy="322.263" rx="55.78" ry="53.766"/>
+		<rect x="94" y="268" fill="#E6E6E6" width="198" height="108"/>
+	</g>
+	<g>
+		<ellipse fill="#E6E6E6" cx="182.312" cy="283.263" rx="55.78" ry="53.766"/>
+		<ellipse fill="#E6E6E6" cx="380.312" cy="283.263" rx="55.78" ry="53.766"/>
+		<rect x="182" y="229" fill="#E6E6E6" width="198" height="108"/>
+	</g>
+</g>
+<g id="Layer_4">
+	<path fill="#66AAD7" d="M127,399.087c0,2.714-2.2,4.913-4.914,4.913h-0.173c-2.714,0-4.914-2.199-4.914-4.913v-52.174
+		c0-2.714,2.2-4.913,4.914-4.913h0.173c2.714,0,4.914,2.199,4.914,4.913V399.087z"/>
+	<path fill="#66AAD7" d="M170,455.087c0,2.714-2.2,4.913-4.914,4.913h-0.173c-2.714,0-4.914-2.199-4.914-4.913v-52.174
+		c0-2.714,2.2-4.913,4.914-4.913h0.173c2.714,0,4.914,2.199,4.914,4.913V455.087z"/>
+	<path fill="#66AAD7" d="M235,424.087c0,2.714-2.2,4.913-4.914,4.913h-0.173c-2.714,0-4.914-2.199-4.914-4.913v-52.174
+		c0-2.714,2.2-4.913,4.914-4.913h0.173c2.714,0,4.914,2.199,4.914,4.913V424.087z"/>
+	<path fill="#66AAD7" d="M302,399.087c0,2.714-2.199,4.913-4.914,4.913h-0.172c-2.715,0-4.914-2.199-4.914-4.913v-52.174
+		c0-2.714,2.199-4.913,4.914-4.913h0.172c2.715,0,4.914,2.199,4.914,4.913V399.087z"/>
+</g>
+</svg>

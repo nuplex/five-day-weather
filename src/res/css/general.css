@@ -11,7 +11,9 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
-    color: #333;
+    font-family: var(--fontstack);
+    font-size: var(--font-size-md);
+    color: var(--black);
+    background: var(--white-bg);
     overflow-x: hidden;
 }

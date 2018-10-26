@@ -1,0 +1,23 @@
+/**
+ CSS relating to fonts (sizes, colors, font-family, etc.)
+ */
+
+:root {
+    --fontstack: sans-serif;
+
+    /* rem is used here specifically for text scalability */
+
+    /** FONT SIZES **/
+    --font-size-xs: 0.8125rem; /* 13px */
+    --font-size-md: 1rem; /* 16px */
+    --font-size-lg: 1.125rem; /* 18px */
+    --font-size-xl: 1.3125rem; /* 21px */
+    --font-size-xxl: 1.75rem; /* 28px */
+
+    /* LINE HEIGHT */
+    --line-height-sm: 1rem; /* 16px */
+    --line-height-md: 1.5rem; /* 24px */
+    --line-height-lg: 1.625rem; /* 26px */
+    --line-height-xl: 1.875rem; /* 30px */
+    --line-height-xxl: 2.5625rem; /* 41px */
+}
