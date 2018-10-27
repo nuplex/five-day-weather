@@ -42,7 +42,6 @@ class GetFiveDayWeather extends PureComponent {
 
         this.setState({
             isLoading: true,
-            currentLocation: ''
         });
 
         //get the data
@@ -100,12 +99,7 @@ class GetFiveDayWeather extends PureComponent {
      * @return the conversion function
      */
     updateDegrees(degSystem){
-        /*this.setState({
-            isLoading: true
-        });*/
-
         let degConvFunc;
-
         //degrees  Kelvin
         if(degSystem === 'F'){
             //we don't show decimal in F
@@ -156,6 +150,7 @@ class GetFiveDayWeather extends PureComponent {
                                 sendError={(msg) => this.displayError(msg)}
                                 usedLocateMe={() => this.usedLocateMe()}
                                 sendLoadingRequest={(bool) => this.setLoading(bool)}
+                                emptyParentLocation={() => (this.setState({currentLocation:''}))}
                             />
                         </Col>
                         {!hasError && !isLoading && weatherData && weatherData.city && weatherData.country &&

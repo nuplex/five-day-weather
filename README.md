@@ -231,6 +231,13 @@ input scenarios.
  the current time (e.g. if it is 13:00, the first block of the 40 will be 13:00). It seems that there is a chance that this
  period would overlap six days instead of five.
   
+## Quirks
+
+- If you press `Locate Me` and the city name it gets back is not one on its list, and you press `Look Up!` without
+modifying the input field (which should have that city), you may get back an entirely different forecast for a different
+city of the same name. This is because `Locate Me` is based off the unique lat/long, where as city search is based off the city name
+and country code, which is not unique.
+  
 ## Tech Debt
 - Use variables for common spacings (e.g. 4px, 8px, 16px)
 - Figure out a system for color variable shades (adding more `er`'s isn't scalable)

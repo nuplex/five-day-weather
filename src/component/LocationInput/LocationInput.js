@@ -12,13 +12,37 @@ class LocationInput extends PureComponent {
         super(props);
 
         this.state = {
-            value: props.location
+            value: props.location,
+            /* If already checked that prop.location matches value.
+            *  If we don't check it'll get stuck in a loop of updating
+            *  in getDerivedStateFromProps */
+            alreadyChecked: false
         };
 
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.sendError = this.sendError.bind(this);
         this.onLocateMe = this.onLocateMe.bind(this);
+    }
+
+   static getDerivedStateFromProps(props, state){
+        //only checking if location changed via 'locate me'
+        if(props.location !== ''
+            && (props.location !== state.value)
+            && !state.alreadyChecked
+        ){
+            /* If parent currentLocation isn't changed back to '',
+             * this component will visually always show the old prop, unless
+             * 'locate me' is pressed again.
+             */
+            props.emptyParentLocation();
+
+            return {
+                value: props.location,
+                alreadyChecked: true
+            };
+        }
+        return state;
     }
 
     onChange(e){
@@ -31,6 +55,10 @@ class LocationInput extends PureComponent {
         if(value === ''){
             this.props.sendError('Please enter a location!');
         } else {
+            this.setState({
+                alreadyChecked: false
+            });
+
             this.props.getWeatherData(value);
             //Do not clear out input!
         }
@@ -38,6 +66,9 @@ class LocationInput extends PureComponent {
 
     onLocateMe(){
         this.props.sendLoadingRequest(true); //will be turned off later
+        this.setState({
+           alreadyChecked: false
+        });
         try{
             getLocation((position) => {
                 if(!position || !position.coords){
@@ -104,13 +135,14 @@ LocationInput.propTypes = {
     usedLocateMe: PropTypes.func,
     /* Tells the parent to load or stop loading */
     sendLoadingRequest: PropTypes.func,
+    /* Clear out location in parent (means locateMe was just used) */
+    emptyParentLocation: PropTypes.func,
 };
 
 LocationInput.defaultProps = {
     location: '',
     sendError: (err) => (console.log(err)),
     usedLocateMe: () => {},
-    sendLoadingRequest: () => {},
 };
 
 export default LocationInput;
