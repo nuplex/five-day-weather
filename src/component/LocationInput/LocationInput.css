@@ -1,8 +1,25 @@
+.locate-me-btn {
+    border: none;
+    text-decoration: underline;
+    margin-top: 2px;
+    padding-left: 0;
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-sm);
+    color: var(--gray-light);
+    cursor: pointer;
+    background: var(--white-bg);
+    float: left;
+}
+
+.locate-me-btn:hover {
+    color: var(--blue-light);
+}
+
 .location-input {
     border: none;
     border-bottom: 1px solid  var(--gray-lighter);
     width: 100%;
-    min-height: calc(100% - 3px); /* keeps border inline with button */
+    min-height: calc(100% - 13px); /* keeps border inline with button */
     font-size: var(--font-size-xl);
     line-height: var(--line-height-xl);
     color: var(--blue-light);
@@ -38,6 +55,10 @@
 @media only screen and (max-width: 48em) {
     .location-submit-btn {
         margin-top: 8px;
+    }
+
+    .location-input-cont {
+        margin-bottom: 8px;
     }
 }
 

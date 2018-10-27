@@ -1,7 +1,8 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import './LocationInput.css';
 import {Grid, Row, Col} from "react-flexbox-grid";
+import {getLocation} from "./util";
+import './LocationInput.css';
 
 /**
  * Simply takes in the typed in location.
@@ -17,6 +18,7 @@ class LocationInput extends PureComponent {
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.sendError = this.sendError.bind(this);
+        this.onLocateMe = this.onLocateMe.bind(this);
     }
 
     onChange(e){
@@ -34,6 +36,25 @@ class LocationInput extends PureComponent {
         }
     }
 
+    onLocateMe(){
+        this.props.sendLoadingRequest(true); //will be turned off later
+        try{
+            getLocation((position) => {
+                if(!position || !position.coords){
+                    throw new Error();
+                } else {
+                    let coords = position.coords;
+                    let lat = coords.latitude > 0 ? `+${coords.latitude}`:coords.latitude;
+                    let lon = coords.longitude > 0 ? `+${coords.longitude}`:coords.longitude;
+                    this.props.usedLocateMe();
+                    this.props.getWeatherData(`${lat}${lon}`);
+                }
+            });
+        } catch {
+            this.sendError('We were unable to locate you.')
+        }
+    }
+
     sendError(msg){
         this.props.sendError(msg);
     }
@@ -44,7 +65,7 @@ class LocationInput extends PureComponent {
         return (
             <Grid fluid>
                 <Row>
-                    <Col xs>
+                    <Col xs className="location-input-cont">
                         <input
                             type="text"
                             className="location-input"
@@ -54,6 +75,12 @@ class LocationInput extends PureComponent {
                             placeholder='Enter a City, U.S. ZIP Code, or Coordinates'
                             autoFocus={true}
                         />
+                        <button
+                            className="locate-me-btn"
+                            onClick={this.onLocateMe}
+                        >
+                            Locate Me
+                        </button>
                     </Col>
                     <Col xs={12} sm={3} md={3} lg={3}>
                         <button
@@ -73,11 +100,17 @@ LocationInput.propTypes = {
     getWeatherData: PropTypes.func.isRequired,
     /* Sends the Error to GetFiveDayWeather to Display*/
     sendError: PropTypes.func,
+    /* Tells parent that 'locate me' was used */
+    usedLocateMe: PropTypes.func,
+    /* Tells the parent to load or stop loading */
+    sendLoadingRequest: PropTypes.func,
 };
 
 LocationInput.defaultProps = {
     location: '',
-    sendError: (err) => (console.log(err))
+    sendError: (err) => (console.log(err)),
+    usedLocateMe: () => {},
+    sendLoadingRequest: () => {},
 };
 
 export default LocationInput;

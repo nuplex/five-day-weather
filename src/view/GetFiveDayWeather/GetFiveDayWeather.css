@@ -1,3 +1,14 @@
 .gfdw-cont {
     margin-top: 5em;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+}
+
+.gfdw-loc-title {
+    margin-top: 8px;
+    margin-bottom: 4px;
+    font-size: var(--font-size-xl);
+    line-height: var(--line-height-xl);
+    color: var(--gray-dark);
 }

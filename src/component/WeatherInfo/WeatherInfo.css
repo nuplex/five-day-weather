@@ -22,7 +22,7 @@
     margin-bottom: 2px;
     font-size: var(--font-size-md);
     line-height: var(--line-height-md);
-    color: var(--gray-dark);
+    color: var(--gray-darker);
 }
 
 .weather-date span {
@@ -48,7 +48,6 @@
     border-radius: 5px;
     text-align: center;
     background: var(--white-bg);
-    margin: 16px;
     padding: 8px;
     min-width: 128px; /* at least bigger than the icon */
 }
@@ -73,6 +72,24 @@
     color: var(--gray-light);
 }
 
+/* Below the medium width, data is hard to read without a background on the info*/
+@media only screen and (max-width: 48em) {
+    .weather-info,
+    .weather-info .wi-sendDetails-btn {
+        background: var(--gray-lightest);
+    }
+
+
+    /*also restrict the max-width; center it; provide gaps*/
+    .weather-info,
+    .weather-info--today{
+        max-width: 256px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 8px;
+    }
+
+}
 
 .wi-sendDetails-btn {
     border: none;

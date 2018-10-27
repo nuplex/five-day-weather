@@ -24,12 +24,15 @@ class GetFiveDayWeather extends PureComponent {
             currentLocation: '',
             currentDegree: 'F',
             currentDegConvert: (deg) => (Math.round(((deg-273.15)*1.8)+32)),
+            usedLocateMe: false,
         };
 
         this.getWeatherData = this.getWeatherData.bind(this);
         this.displayError = this.displayError.bind(this);
         this.hideError = this.hideError.bind(this);
+        this.setLoading = this.setLoading.bind(this);
         this.updateDegrees = this.updateDegrees.bind(this);
+        this.usedLocateMe = this.usedLocateMe.bind(this);
     }
 
     getWeatherData(locationString) {
@@ -38,7 +41,8 @@ class GetFiveDayWeather extends PureComponent {
         }
 
         this.setState({
-            isLoading: true
+            isLoading: true,
+            currentLocation: ''
         });
 
         //get the data
@@ -49,6 +53,12 @@ class GetFiveDayWeather extends PureComponent {
                         isLoading: false
                     }, this.displayError(STOCK_ERRORS.LOCATION_SEARCH));
                 } else {
+                    if(this.state.usedLocateMe){
+                        this.setState({
+                            usedLocateMe: false,
+                            currentLocation: (data && data.city && data.country ? `${data.city}, ${data.country}`:'')
+                        })
+                    }
                     this.setState({
                         weatherData: data,
                         isLoading: false
@@ -75,7 +85,13 @@ class GetFiveDayWeather extends PureComponent {
         this.setState({
             hasError: false,
             errorMsg: ''
-        })
+        });
+    }
+
+    setLoading(bool){
+        this.setState({
+            isLoading: bool
+        });
     }
 
     /**
@@ -96,7 +112,7 @@ class GetFiveDayWeather extends PureComponent {
             degConvFunc = (deg) => (Math.round(((deg-273.15)*1.8)+32));
         } else if (degSystem === 'C') {
             //Normal to show a decimal point in C
-            degConvFunc = (deg) => (((Math.round(deg - 273.15) * 10)/10));
+            degConvFunc = (deg) => ((Math.round(deg - 273.15)));
         } else {
             //fallback to show just kelvin
             degConvFunc = (deg) => (deg);
@@ -109,6 +125,12 @@ class GetFiveDayWeather extends PureComponent {
             currentDegree: degSystem,
             currentDegConvert: degConvFunc,
         });
+    }
+
+    usedLocateMe(){
+        this.setState({
+            usedLocateMe: true
+        })
     }
 
     render(){
@@ -132,8 +154,15 @@ class GetFiveDayWeather extends PureComponent {
                                 getWeatherData={(loc) => (this.getWeatherData(loc))}
                                 location={currentLocation ? currentLocation:''}
                                 sendError={(msg) => this.displayError(msg)}
+                                usedLocateMe={() => this.usedLocateMe()}
+                                sendLoadingRequest={(bool) => this.setLoading(bool)}
                             />
                         </Col>
+                        {!hasError && !isLoading && weatherData && weatherData.city && weatherData.country &&
+                            <Col xs={12} lg={10}>
+                                <p className="gfdw-loc-title">{weatherData.city}, {weatherData.country}</p>
+                            </Col>
+                        }
                         <Col xs={12} lg={10}>
                             {isLoading ?
                                 <Loading/>

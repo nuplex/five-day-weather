@@ -41,7 +41,7 @@ class FiveDayWeatherInfo extends PureComponent {
             <div className="fdw-cont">
                 {weatherData && weatherData.days &&
                     <Grid fluid>
-                        <Row xs={12} center="lg">
+                        <Row xs={12} center="xs">
                             {weatherData.days.map( (day, index) => {
                               return (
                                   <Col xs={12} sm={10} md={4} lg={2} key={day.dateObject.getTime()}>

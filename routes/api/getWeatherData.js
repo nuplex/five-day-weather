@@ -23,19 +23,29 @@ router.get('/getFiveDay', (req, res) => {
                 append = (() => {
                     //quick parsing
                     let latlong = '';
-                    const latlonRE = /([+-][0-9]{1,3}(?:\.[0-9]+)?)/g;
+                    const latlonRE = /([+-]?[0-9]{1,3}(?:\.[0-9]+)?)/g;
                     const matches = loc.match(latlonRE);
                     if(matches.length < 2){
                         latlong ='__EXIT_L'
                     } else {
-                        latlong = `lat=${matches[0]}&lon=${matches[1]}`
+                        /* OWM is NOT a fan of the '+', it will sometimes take it
+                         * and other times it will not. This is true even for
+                         * identical inputs!
+                         *
+                         * Issue discussed more in README.md, in 'Other Issues'
+                         *
+                         * This is not a surefire solution
+                         */
+                        const lat = matches[0].replace('+','');
+                        const lon = matches[1].replace('+','');
+                        latlong = `lat=${lat}&lon=${lon}`
                     }
 
                     return latlong;
                 })();
         }
 
-        if(append !== 'EXIT_L') {
+        if(append !== '__EXIT_L') {
             const owmUrl = `http://api.openweathermap.org/data/2.5/forecast?${append}&appid=${API_KEY}`;
 
             request(owmUrl, (error, response, body) => {

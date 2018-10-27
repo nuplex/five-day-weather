@@ -33,6 +33,8 @@ To end the program, in your terminal press `CTRL + C`
 #### Testing
 To run the unit tests, do `npm run test`.
 
+If testing lat/lon: [Issue with OpenWeatherMap Latitude/Longitude Query](https://github.com/nuplex/five-day-weather#other-issues)
+
 ## Thought Process
 
 1. Carefully read over the specifications. I read over each part and thought about how
@@ -96,7 +98,7 @@ is returned.
 OWM is capable of returning data for these (zip code + country code), however figuring out the regex is a different 
 story since zip-codes in other countries can have many different formats.
 
-### Look Me Up Button
+### Locate Me Button
 
 Click the 'Look Me Up' button to get the forecast for your location, without inputting a thing.
 
@@ -158,11 +160,23 @@ for each request. To easily do this the library `react-router-dom` is necessary.
 The same applies to not defaulting to Fahrenheit. A `?d={F/C}` could be added that lets the app load into one
 automatically. 
 
+### Weather Blurb
+
+A quick blurb under the location based off the current weather. For example, 'It's cold!' if the temparature is under a 
+certain amount or 'It's a nice day out!' if it is clear and warm.
+
 ### Accessibility - Icon Alts
+
 The icon alts are very basic and take the group weather pattern, this is most noticed for the 700s (volcanic ash, fog, 
 etc.), which defaults to 'fog'. It would be better to make these more distinct.
 
+### Support N,W,E,S Coordinate Input
+
+Currently the app expects +/- type coordinate. Supporting this would allow this format to be submitted without the user 
+converting it..
+
 ### Smooth Animations
+
 My initial idea of the app had the input bar in the center of the screen, and then when you enter a place, it moves up
 and shows the weather. I scrapped this when establishing trade-offs.
 
@@ -207,12 +221,47 @@ scalability of organization in mind.
 ## Known Bugs
 - The regular expression governing the location input likely does not cover all
 input scenarios.
+- The `Look Up!` button will jump up very slightly when resizing down past a certain breakpoint.
+- `Locate Me` can fail. See: [Issue with OpenWeatherMap Latitude/Longitude Query](https://github.com/nuplex/five-day-weather#other-issues)
+- Valid latitude/longitude coordinates can fail. See: [Issue with OpenWeatherMap Latitude/Longitude Query](https://github.com/nuplex/five-day-weather#other-issues)
+- The loading icon will sometimes show it's `alt` spinning if the svg has not loaded yet.
 
 ## Suspected Bugs
 - The OpenWeatherMap calculates the 'five days' based off of 40 three hour periods. It also only starts the periods from
  the current time (e.g. if it is 13:00, the first block of the 40 will be 13:00). It seems that there is a chance that this
  period would overlap six days instead of five.
- 
+  
 ## Tech Debt
 - Use variables for common spacings (e.g. 4px, 8px, 16px)
 - Figure out a system for color variable shades (adding more `er`'s isn't scalable)
+
+## Other Issues
+### OpenWeatherMap Latitude/Longitude Query
+OWM's API is very inconsistent with what it considers a valid input for latitude and longitude, identical inputs 
+can succeed or fail, namely with the error `X is not a float`. After trial and error, I found part of the issue was due to how close
+the lat/lon was to one of their preset points. It returns this error **even if the number is a float** or
+even if it is a **valid location**. This means more often than not `Locate Me` will not work. The only solution would be
+to implement an in-between on my side that uses their bulk city data, finds which point is closest to the passed in lat/lon,
+and passes that instead.
+
+This bug is also connected to having a `+` present before a value. However it is not consistent. Sometimes it will allow
+the `+` other times it will not. I could not figure out what the conditions we're, so I removed `+` from my queries.
+
+**Examples:**
+
+- Eiffel Tower (lat=+48.8584&lon=+2.2945)
+- My Town Location (lat=+40.5687695&lon=+74.6150385)
+
+It also seems that if a query fails, but you remove the `+` and it (maybe) works, it works after that regardless of `+` being 
+there or not. When I first put Eiffel Tower in, it did not work with `+`, after removing the `+`, it did, and ~~now it works
+with either.~~ still works inconsistently. 
+
+Precision is also a contributing issue, though it is widely inconsistent, since the API can return success and errors both 
+for whole numbers and high precision floats.
+
+I verified this inconsistent behaviour with Postman, an application that lets you edit and send requests and view the 
+responses.
+
+I do not know the steps to reproduce this error. It is seemingly random. The best coordinates to test with are those right
+on top of major cities.
+
