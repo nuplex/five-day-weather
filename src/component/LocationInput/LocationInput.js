@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import './LocationInput.css';
+import {Grid, Row, Col} from "react-flexbox-grid";
 
 /**
  * Simply takes in the typed in location.
@@ -40,21 +41,27 @@ class LocationInput extends PureComponent {
         const { value } = this.state;
 
         return (
-            <div className="location-input-cont">
-                <input
-                    type="text"
-                    className="location-input"
-                    value={value}
-                    onChange={this.onChange}
-                    onKeyPress={(e) => { if(e.key === 'Enter') this.onSubmit()}}
-                    placeholder='Enter "City, Country Code (e.g UK)" or "U.S. ZIP Code"'
-                    autoFocus={true}
-                />
-                <button
-                    className="location-submit-btn"
-                    onClick={this.onSubmit}
-                >Look Up!</button>
-            </div>
+            <Grid fluid>
+                <Row>
+                    <Col xs>
+                        <input
+                            type="text"
+                            className="location-input"
+                            value={value}
+                            onChange={this.onChange}
+                            onKeyPress={(e) => { if(e.key === 'Enter') this.onSubmit()}}
+                            placeholder='Enter "City, Country Code (e.g UK)" or "U.S. ZIP Code"'
+                            autoFocus={true}
+                        />
+                    </Col>
+                    <Col xs={12} sm={3} md={3} lg={3}>
+                        <button
+                            className="location-submit-btn"
+                            onClick={this.onSubmit}
+                        >Look Up!</button>
+                    </Col>
+                </Row>
+            </Grid>
         )
     }
 }

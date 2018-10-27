@@ -1,4 +1,4 @@
-#Your Five Day Weather
+# Your Five Day Weather
 
 ## About
 
@@ -7,7 +7,7 @@ the app will locate you. That's all!
 
 #### create-react-app
 This app was initialized with create-react-app. While create-react-app does come with some boilerplate, it is great for 
-quickly starting small applications like this where modification to build folders (e.g. bable, webpack), are not 
+quickly starting small applications like this where modifications to build folders (e.g. bable, webpack), are not 
 necessary. If ever needed, an `npm run eject` allows access to all files and configurations.
 
 ## Get Started
@@ -35,21 +35,23 @@ To run the unit tests, do `npm run test`.
 
 ## Thought Process
 
-Before I started coding:
 1. Carefully read over the specifications. I read over each part and thought about how
 to do it with my given experience. It did not seem initially like much work.
 2. Research and test the API, understand the returned data. Finding out that there is no actual purely 'five-day' data 
 returned increased the amount of work considerably. (Going from just showing, to parsing then showing).
 3. Determine what framework and library to use. React, to me, is best if I want to start quickly, so I chose it. I've 
-explained why I used certain libraries below. A CSS-Preprocessors was not used because the estimated size of the  
+explained why I used certain libraries below. A CSS-Preprocessor was not used because the estimated size of the  
 application was small.
 4. Determine the pure-MVP (project specification taken at face value), and my personal MVP, and resolve which features 
-to implement based  how a typical forecast app would function.
+to implement based on how a typical forecast app would function.
 5. Think and plan out the UI. I decided to make my own icons at this stage since it would be fairly quick.
 6. Initialize the project, create directories. Create empty component folders so I know what components I will want.
 7. Think of fail-states for each component. What would be considered 'passing'?
-8. Start coding! Code, view, test, code, repeat.
-9. Discussed below is trade-off. Determining when to shelve something or to keep working on it is a constant decision.
+8. Start coding! Code, view, test, code, repeat. I focused on essential components first  (e.g. `LocationInput`, 
+`GetFiveDayWeather`), ensuring I was getting data correctly back from the API, then worked more on 
+visual components later. 
+9. Discussed below were the in-process trade-offs. Determining when to shelve something or to keep working on it is a 
+constant decision.
 
 
 ## Trade-offs
@@ -70,9 +72,9 @@ get the data for a random city, or perhaps the current location, and display it.
 of an application.
 
 ##### Polish
-So the juggling those two factors results in knowing what to polish and what not to. Being able to enter a location by city,
-zip code, and lat-long is a basic enough feature. The application using a minimalistic design instead of barebones HTML is
-enough in-terms of polish.
+Juggling those two factors results in knowing what to polish and what not to. Being able to enter a location by city,
+zip code, and lat-long is an adequate feature. The application using a minimalistic design instead of barebones HTML is
+enough in terms of polish.
 
 ##### All-together now
 Essentially, these led to:
@@ -103,7 +105,7 @@ the OWM bulk download of cities.
 
 ### View Weather Details
 
-By clicking 'View Details', the app can display more data than the average user may need.
+By clicking 'View Details' on a day, the app can display more weather data for that day.
 
 
 ### F°/C° Toggle
@@ -181,7 +183,7 @@ For a small project, this level of organization isn't necessary, however it's al
 scalability of organization in mind.
 
 ## Known Bugs
-- The regular expressions governing the location input likely does not cover all
+- The regular expression governing the location input likely does not cover all
 input scenarios.
 
 ## Suspected Bugs

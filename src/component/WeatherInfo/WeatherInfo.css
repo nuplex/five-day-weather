@@ -1,0 +1,55 @@
+.temp,
+.temp--high,
+.temp--low {
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-lg);
+}
+
+.temp--high {
+    color: var(--blue-light);
+}
+
+.temp-low {
+    color: var(--gray-lighter);
+}
+
+.weather-date {
+    text-align: center;
+}
+
+.weather-date p {
+    margin-bottom: 2px;
+    font-size: var(--font-size-md);
+    line-height: var(--line-height-md);
+    color: var(--gray-dark);
+}
+
+.weather-date span {
+    font-size: var(--font-size-md);
+    line-height: var(--line-height-md);
+    color: var(--gray);
+}
+
+.weather-info {
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    background: var(--white);
+    margin: 16px;
+    padding: 8px;
+    min-width: 128px; /* at least bigger than the icon */
+}
+
+.weather-info p {
+    margin: 4px 0;
+    text-align: center;
+}
+
+.wi-sendDetails-btn {
+    border: none;
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-sm);
+    color: var(--blue-light);
+    cursor: pointer;
+    background: var(--white);
+}

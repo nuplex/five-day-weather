@@ -93,8 +93,8 @@ const getKeyData = (data) => {
         const currDayOfMonth = currDate.getDate();
         const currHour = currDate.getHours();
         const nextDayTimeIsDiffDay = (new Date(currDayInMS + ThreeHrsAsMs)).getDate() !== currDayOfMonth;
-        const todayIsPastDayPointRange = index === 0 && currHour > 15;
-        const todayIsBeforeDayPointRange = index === 0 && currHour < 11;
+        const todayIsPastDayPointRange = currHour > 15;
+        const todayIsBeforeDayPointRange = currHour < 11;
 
         //do NOT set high and low if the current time is on a different day, unless this is the last dayTime
         if((!lastDayTime && !nextDayTimeIsDiffDay) || lastDayTime){
@@ -110,6 +110,7 @@ const getKeyData = (data) => {
              B: it's not set and the time is past 11am - 3pm
              C: it's not set, this is the last dayTime, and 11am - 3pm has not happened yet
          */
+
         if(!currDayPoint && ((currHour >= 11 && currHour <= 15)
             || todayIsPastDayPointRange
             || (lastDayTime && todayIsBeforeDayPointRange)) ){
@@ -122,13 +123,7 @@ const getKeyData = (data) => {
             let day = {
                 high: currHigh,
                 low: currLow,
-                /* We will base the weather off what happens at noon that day,
-                   Why? That's when the weather is most obvious to a person.
-
-                   If noon has already past today, then it will be whatever the first
-                   available time is.
-                 */
-                weather: currDayPoint,
+                weatherData: currDayPoint.weather[0],//is sn array for some reason
                 /* excess information, also gathered at noon, from 'main' */
                 details: currDayPoint.main,
                 /* for easy access later */

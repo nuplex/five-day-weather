@@ -86,18 +86,19 @@ class GetFiveDayWeather extends PureComponent {
             <div className="gfdw-cont">
                 <Grid fluid>
                     <Row center="xs">
-                        <Col xs={12} md={8} lg={8}>
+                        <Col md={12} lg={10}>
                             <LocationInput
-                                getWeatherData={this.getWeatherData}
+                                getWeatherData={(loc) => (this.getWeatherData(loc))}
                                 location={currentLocation ? currentLocation:''}
+                                sendError={(msg) => this.displayError(msg)}
                             />
                         </Col>
-                        <Col xs={12}>
+                        <Col xs={12} lg={10}>
                             {hasError &&
                                 <Error errorMsg={errorMsg}/>
                             }
                             {!hasError && weatherData &&
-                                <FiveDayWeatherInfo weatherData={weatherData} sendError={this.displayError}/>
+                                <FiveDayWeatherInfo weatherData={weatherData} sendError={(msg) => this.displayError(msg)}/>
                             }
                         </Col>
                     </Row>
