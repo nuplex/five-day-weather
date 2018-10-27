@@ -1,0 +1,30 @@
+.loading-cont {
+    margin-top: 36px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.loading-cont img{
+    width: 160px;
+    height: 160px;
+    animation-name: spin;
+    animation-duration: 4000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.loading-cont p{
+    margin-top: 4px;
+    font-size: var(--font-size-lg);
+    line-height: var(--font-size-lg);
+    color: var(--yellow);
+}
+
+@keyframes spin{
+    from { transform: rotate(0deg); }
+    to {transform: rotate(360deg); }
+}

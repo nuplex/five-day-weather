@@ -20,19 +20,38 @@ router.get('/getFiveDay', (req, res) => {
                 append = 'zip='+loc;
                 break;
             case 'latlong':
-                append = loc;
+                append = (() => {
+                    //quick parsing
+                    let latlong = '';
+                    const latlonRE = /([+-][0-9]{1,3}(?:\.[0-9]+)?)/g;
+                    const matches = loc.match(latlonRE);
+                    if(matches.length < 2){
+                        latlong ='__EXIT_L'
+                    } else {
+                        latlong = `lat=${matches[0]}&lon=${matches[1]}`
+                    }
+
+                    return latlong;
+                })();
         }
 
-        const owmUrl = `http://api.openweathermap.org/data/2.5/forecast?${append}&appid=${API_KEY}`;
+        if(append !== 'EXIT_L') {
+            const owmUrl = `http://api.openweathermap.org/data/2.5/forecast?${append}&appid=${API_KEY}`;
 
-        request(owmUrl, (error, response, body) => {
-            if(error){
-                res.status(400);
-                res.json({error: error});
-            } else {
-                res.json(JSON.parse(body));
-            }
-        });
+            request(owmUrl, (error, response, body) => {
+                if (error) {
+                    res.status(400);
+                    res.json({error: error});
+                } else {
+                    res.json(JSON.parse(body));
+                }
+            });
+        } else {
+            res.status(400);
+            res.json({
+                error: 'Lat-Long was not formatted properly'
+            });
+        }
     } else {
         res.status(400);
         res.json({

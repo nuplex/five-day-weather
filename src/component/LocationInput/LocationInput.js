@@ -25,10 +25,11 @@ class LocationInput extends PureComponent {
         })
     }
     onSubmit(){
-        if(this.state.value === ''){
+        const value = this.state.value.trim();
+        if(value === ''){
             this.props.sendError('Please enter a location!');
         } else {
-            this.props.getWeatherData(this.state.value);
+            this.props.getWeatherData(value);
             //Do not clear out input!
         }
     }

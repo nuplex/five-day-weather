@@ -1,15 +1,39 @@
 const resolveInputType = (locationString) => {
-    return 'city';
+    if(!locationString){
+        //This should not happen, LocationInput.js checks this, but lets handle it anyway
+        throw Error('Location was empty.');
+    }
+
+    const firstChar = locationString.trim().charAt(0);
+    /* Basic Resolving
+     * City -> First char is always a letter, we will also default to this for all other chars (an error will be thrown
+     * later)
+     * US Zip Code -> First char is a number
+     * Lat-Long -> First char is a + or a -
+     * */
+    if(firstChar.match(/[A-Za-z]/)){
+        return 'city';
+    } else if (firstChar.match(/[0-9]/)){
+        return 'zip';
+    } else if (firstChar.match(/\+|-/)) {
+        return 'latlong';
+    } else {
+        return 'city';
+    }
+
 };
 
 const formatCityCountry = (locationString) => {
-    const cityCountryRE = /\s*([A-Za-z]*(?:\s*[A-Za-z]*)*)\s*,*\s*([A-Za-z]{2,3})/g;
+    const cityCountryRE = /\s*([A-Za-z]*(?:\s*[A-Za-z]*)*)\s*(?:,+\s*([A-Za-z]{2,3}))*/g;
     const matches = cityCountryRE.exec(locationString);
+    //get rid of all spacing anywhere EXCEPT in city names (e.g. New York)
     const cityToken = matches[1].replace(/\s+\s*/g,' ').replace(/\s/g,'+'); //OWM uses '+' for space
     const countryToken = matches[2];
 
-    return `${cityToken},${countryToken}`;
+    return `${cityToken}${countryToken ? ','+countryToken:''}`;
 };
+
+
 
 /**
  * Gets the raw forecast data and returns in a better form for the app's purposes
@@ -23,7 +47,17 @@ const getForecast = async (locationString) => {
         default:
         case 'city':
             formatted = formatCityCountry(locationString);
+            break;
+        case 'zip':
+            formatted = locationString.trim();
+            break;
+        case 'latlong':
+            formatted = locationString.trim();
+            //latlong will be parsed into separate args server side (results in less conditional logic)
+            break;
     }
+
+    console.log(formatted);
 
     const headers = {
       'Content-Type': 'application/json'
@@ -40,7 +74,7 @@ const getForecast = async (locationString) => {
 
     //OWM can send back errors even if it responds with 200
     if(data && data.cod){
-        if(data.cod === 404){
+        if(data.cod === "404"){
             //This will be handled differently, so don't throw it as an error.
             return {
                 error: 'City not found',

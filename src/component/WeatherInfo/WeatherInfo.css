@@ -53,3 +53,7 @@
     cursor: pointer;
     background: var(--white);
 }
+
+.wi-today-text {
+    font-weight: bold;
+}

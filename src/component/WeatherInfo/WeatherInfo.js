@@ -10,7 +10,7 @@ function WeatherInfo({day, index, sendDetails}){
         <div className="weather-info">
             <div className="weather-date">
                 {index === 0 ?
-                    <p>Today</p>
+                    <p className="wi-today-text">Today</p>
                     :
                     <p>{getDayName(day.dateObject.getDay())}</p>
                 }

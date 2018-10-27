@@ -1,10 +1,10 @@
 h1.error-text {
     margin: 0;
-    font-size: var(--font-size-xl);
-    line-height: var(--line-height-xl);
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-lg);
     color: var(--red);
 }
 
 .error-cont {
-
+    margin-top: 16px;
 }

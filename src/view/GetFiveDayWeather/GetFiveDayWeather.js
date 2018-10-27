@@ -6,6 +6,7 @@ import Error from '../../component/Error/Error';
 import {getForecast} from "./util";
 import {STOCK_ERRORS} from "../../component/Error/util";
 import './GetFiveDayWeather.css';
+import Loading from "../../component/Loading/Loding";
 
 /**
  * Main (and only) view for the application. Handles input of location and displaying the weather.
@@ -94,11 +95,20 @@ class GetFiveDayWeather extends PureComponent {
                             />
                         </Col>
                         <Col xs={12} lg={10}>
-                            {hasError &&
-                                <Error errorMsg={errorMsg}/>
-                            }
-                            {!hasError && weatherData &&
-                                <FiveDayWeatherInfo weatherData={weatherData} sendError={(msg) => this.displayError(msg)}/>
+                            {isLoading ?
+                                <Loading/>
+                                :
+                                <React.Fragment>
+                                    {hasError &&
+                                    <Error errorMsg={errorMsg}/>
+                                    }
+                                    {!hasError && weatherData &&
+                                    <FiveDayWeatherInfo
+                                        weatherData={weatherData}
+                                        sendError={(msg) => this.displayError(msg)}
+                                    />
+                                    }
+                                </React.Fragment>
                             }
                         </Col>
                     </Row>
