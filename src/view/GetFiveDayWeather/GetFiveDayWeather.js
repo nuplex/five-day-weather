@@ -3,6 +3,7 @@ import {Grid, Row, Col} from 'react-flexbox-grid';
 import LocationInput from '../../component/LocationInput/LocationInput';
 import FiveDayWeatherInfo from '../../component/FiveDayWeatherInfo/FiveDayWeatherInfo';
 import Error from '../../component/Error/Error';
+import DegreeToggle from '../../component/DegreeToggle/DegreeToggle'
 import {getForecast} from "./util";
 import {STOCK_ERRORS} from "../../component/Error/util";
 import './GetFiveDayWeather.css';
@@ -21,11 +22,14 @@ class GetFiveDayWeather extends PureComponent {
             hasError: false,
             errorMsg: '',
             currentLocation: '',
+            currentDegree: 'F',
+            currentDegConvert: (deg) => (Math.round(((deg-273.15)*1.8)+32)),
         };
 
         this.getWeatherData = this.getWeatherData.bind(this);
         this.displayError = this.displayError.bind(this);
         this.hideError = this.hideError.bind(this);
+        this.updateDegrees = this.updateDegrees.bind(this);
     }
 
     getWeatherData(locationString) {
@@ -74,16 +78,52 @@ class GetFiveDayWeather extends PureComponent {
         })
     }
 
+    /**
+     * Updates the degrees the app will show by returning the conversion function
+     * @param degSystem - the system being used
+     * @return the conversion function
+     */
+    updateDegrees(degSystem){
+        /*this.setState({
+            isLoading: true
+        });*/
+
+        let degConvFunc;
+
+        //degrees  Kelvin
+        if(degSystem === 'F'){
+            //we don't show decimal in F
+            degConvFunc = (deg) => (Math.round(((deg-273.15)*1.8)+32));
+        } else if (degSystem === 'C') {
+            //Normal to show a decimal point in C
+            degConvFunc = (deg) => (((Math.round(deg - 273.15) * 10)/10));
+        } else {
+            //fallback to show just kelvin
+            degConvFunc = (deg) => (deg);
+            degSystem = 'K';
+        }
+
+
+
+        this.setState({
+            currentDegree: degSystem,
+            currentDegConvert: degConvFunc,
+        });
+    }
+
     render(){
         const {
             weatherData,
             isLoading,
             hasError,
             errorMsg,
-            currentLocation
+            currentLocation,
+            currentDegree,
+            currentDegConvert,
         } = this.state;
 
         return (
+            <React.Fragment>
             <div className="gfdw-cont">
                 <Grid fluid>
                     <Row center="xs">
@@ -106,6 +146,7 @@ class GetFiveDayWeather extends PureComponent {
                                     <FiveDayWeatherInfo
                                         weatherData={weatherData}
                                         sendError={(msg) => this.displayError(msg)}
+                                        degConvert={(deg) => currentDegConvert(deg)}
                                     />
                                     }
                                 </React.Fragment>
@@ -114,6 +155,11 @@ class GetFiveDayWeather extends PureComponent {
                     </Row>
                 </Grid>
             </div>
+            <DegreeToggle
+                updateDegrees={(deg) => this.updateDegrees(deg)}
+                degrees={currentDegree}
+            />
+            </React.Fragment>
         )
     }
 }

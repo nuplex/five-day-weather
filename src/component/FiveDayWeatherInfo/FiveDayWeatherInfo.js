@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import {Grid, Row, Col} from "react-flexbox-grid";
 import WeatherInfo from "../WeatherInfo/WeatherInfo";
 
+/**
+ * Holds the five combined WeatherInfo's to display a forecast.
+ */
 class FiveDayWeatherInfo extends PureComponent {
     constructor(props) {
         super(props);
@@ -28,7 +31,11 @@ class FiveDayWeatherInfo extends PureComponent {
     }
 
     render() {
-        const {weatherData} = this.props;
+        const {
+            weatherData,
+            degConvert,
+            degSystem
+        } = this.props;
 
         return (
             <div className="fdw-cont">
@@ -41,7 +48,9 @@ class FiveDayWeatherInfo extends PureComponent {
                                       <WeatherInfo
                                           day={day}
                                           index={index}
-                                          sendDetails={(details) => (this.showDetails)}
+                                          sendDetails={(details) => (this.showDetails(details))}
+                                          degConvert={(deg) => degConvert(deg)}
+                                          degSystem={degSystem}
                                       />
                                   </Col>
                               )
@@ -58,7 +67,8 @@ FiveDayWeatherInfo.propTypes = {
     weatherData: PropTypes.shape({}).isRequired,
     /* Sends the Error to GetFiveDayWeather to Display*/
     sendError: PropTypes.func,
+    /* converts the degrees */
+    degConvert: PropTypes.func.isRequired,
 };
-
 
 export default FiveDayWeatherInfo;

@@ -57,8 +57,6 @@ const getForecast = async (locationString) => {
             break;
     }
 
-    console.log(formatted);
-
     const headers = {
       'Content-Type': 'application/json'
     };

@@ -49,9 +49,12 @@ to implement based on how a typical forecast app would function.
 7. Think of fail-states for each component. What would be considered 'passing'?
 8. Start coding! Code, view, test, code, repeat. I focused on essential components first  (e.g. `LocationInput`, 
 `GetFiveDayWeather`), ensuring I was getting data correctly back from the API, then worked more on 
-visual components later. 
+visual components later. Look and feel updates we're incremental, and most was saved for the end.
 9. Discussed below were the in-process trade-offs. Determining when to shelve something or to keep working on it is a 
 constant decision.
+
+#### Design Process
+
 
 
 ## Trade-offs
@@ -116,9 +119,13 @@ Click either 'F°'/'C°' toggle and the app will change the temperatures to that
 OWM by default returns temperatures in degrees Kelvin, but can return them in F°/C° as well if added to the query. 
 However it would be slow to make a new query everytime these were switched, it's better to calculate them on the fly.
 
+##### Note
+The toggle could easily have Kelvin added to it. I left it out because it's not usually displayed on similar apps.
+
 ### Custom Weather Icons!
 
-I made the Weather Icons myself! I didn't want to use stock photos, and frankly OWM's icons are a bit dated.
+I made the Weather Icons myself! I didn't want to use stock photos, and frankly OWM's icons are a bit dated. The loading
+icon is also made by me.
 
 ##### Wanted Enhancement - More Icons
 
@@ -140,9 +147,24 @@ solution would be to store city data that has the lat-long of every city, and au
 has this, but without states, so the user would not be able to differentiate between, e.g. Somerville, NJ and 
 Somerville, MA. 
 
+### Preload Weather from URL
+The app is in a clear state on every reload. If we saved queries to the url as parameters, then on refresh we would see 
+the same page, which is ideal. It would also allow pressing 'back' and 'forward'. The skeleton to do this is somewhat 
+here (the location input can be preloaded through props). A different way to do it would be to have a generated route 
+for each request. To easily do this the library `react-router-dom` is necessary.
+
+##### Addendum - F°/C° defaults
+
+The same applies to not defaulting to Fahrenheit. A `?d={F/C}` could be added that lets the app load into one
+automatically. 
+
 ### Accessibility - Icon Alts
 The icon alts are very basic and take the group weather pattern, this is most noticed for the 700s (volcanic ash, fog, 
 etc.), which defaults to 'fog'. It would be better to make these more distinct.
+
+### Smooth Animations
+My initial idea of the app had the input bar in the center of the screen, and then when you enter a place, it moves up
+and shows the weather. I scrapped this when establishing trade-offs.
 
 ## Libraries
 
@@ -190,3 +212,7 @@ input scenarios.
 - The OpenWeatherMap calculates the 'five days' based off of 40 three hour periods. It also only starts the periods from
  the current time (e.g. if it is 13:00, the first block of the 40 will be 13:00). It seems that there is a chance that this
  period would overlap six days instead of five.
+ 
+## Tech Debt
+- Use variables for common spacings (e.g. 4px, 8px, 16px)
+- Figure out a system for color variable shades (adding more `er`'s isn't scalable)

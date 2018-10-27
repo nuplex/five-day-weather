@@ -3,14 +3,15 @@
 .temp--low {
     font-size: var(--font-size-lg);
     line-height: var(--line-height-lg);
+    padding-left: 4px; /* off set the degree symbol */
 }
 
 .temp--high {
-    color: var(--blue-light);
+    color: var(--gray-light);
 }
 
-.temp-low {
-    color: var(--gray-lighter);
+.temp--low {
+    color: var(--blue-lighter);
 }
 
 .weather-date {
@@ -30,20 +31,48 @@
     color: var(--gray);
 }
 
-.weather-info {
+.weather-desc--long {
+    text-transform: uppercase;
+    font-size: var(--font-size-sm);
+    color: var(--gray);
+}
+
+.weather-desc--short{
+    font-size: var(--font-size-md);
+    color: var(--black);
+}
+
+.weather-info,
+.weather-info--today {
     border: none;
     border-radius: 5px;
     text-align: center;
-    background: var(--white);
+    background: var(--white-bg);
     margin: 16px;
     padding: 8px;
     min-width: 128px; /* at least bigger than the icon */
 }
 
-.weather-info p {
+.weather-info p,
+.weather-info--today p {
     margin: 4px 0;
     text-align: center;
 }
+
+.weather-info--today,
+.weather-info--today .wi-sendDetails-btn {
+    background: var(--yellow-bg);
+}
+
+.weather-info--today .wi-sendDetails-btn,
+.weather-info--today .temp--high {
+    color: var(--yellow-dark);
+}
+
+.weather-info--today .temp--low {
+    color: var(--gray-light);
+}
+
 
 .wi-sendDetails-btn {
     border: none;
@@ -51,9 +80,9 @@
     line-height: var(--line-height-sm);
     color: var(--blue-light);
     cursor: pointer;
-    background: var(--white);
+    background: var(--white-bg);
 }
 
 .wi-today-text {
-    font-weight: bold;
+    color: var(--yellow-dark) !important;
 }

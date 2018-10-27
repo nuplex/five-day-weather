@@ -4,10 +4,13 @@ import WeatherIcon from '../WeatherIcon/WeatherIcon';
 import {getDayName} from "./util";
 import './WeatherInfo.css';
 
-function WeatherInfo({day, index, sendDetails}){
+/**
+ * Shows weather for an individual day.
+ */
+function WeatherInfo({day, index, sendDetails, degConvert}){
 
     return (
-        <div className="weather-info">
+        <div className={index === 0 ? "weather-info--today":"weather-info"}>
             <div className="weather-date">
                 {index === 0 ?
                     <p className="wi-today-text">Today</p>
@@ -20,13 +23,13 @@ function WeatherInfo({day, index, sendDetails}){
             <div className="weather-icon-cont">
                 <WeatherIcon weatherID={day.weatherData.id}/>
                 <p className="weather-desc--short">{day.weatherData.main}</p>
+                <p className="weather-desc--long">{day.weatherData.description}</p>
             </div>
-            <p className="temp temp--high">{day.high}</p>
-            <p className="temp temp--low">{day.low}</p>
-            <p className="weather-desc--long">{day.weatherData.description}</p>
+            <p className="temp temp--high">{degConvert(day.high)}°</p>
+            <p className="temp temp--low">{degConvert(day.low)}°</p>
             <button
                 className="wi-sendDetails-btn"
-                onClick={sendDetails(day.details)}
+                onClick={() => (sendDetails(day.details))}
             >Show Details</button>
         </div>
     );
@@ -39,6 +42,8 @@ WeatherInfo.propTypes = {
     index: PropTypes.number,
     /* to send details upward to be shown in the parent component */
     sendDetails: PropTypes.func,
+    /* converts the degrees */
+    degConvert: PropTypes.func.isRequired,
 };
 
 export default WeatherInfo;

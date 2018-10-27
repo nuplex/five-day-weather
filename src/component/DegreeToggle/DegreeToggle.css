@@ -1,0 +1,21 @@
+.degree-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    height: 50px;
+    width: 50px;
+    padding-left: 2px; /* degree symbol should be more off center */
+    border: none;
+    border-radius: 50%;
+    background: var(--blue-dark);
+    font-size: var(--font-size-xl);
+    color: var(--white);
+    cursor: pointer;
+}
+
+.degree-toggle:hover{
+    background: var(--blue-darker);
+}

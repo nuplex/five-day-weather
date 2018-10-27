@@ -51,7 +51,7 @@ class LocationInput extends PureComponent {
                             value={value}
                             onChange={this.onChange}
                             onKeyPress={(e) => { if(e.key === 'Enter') this.onSubmit()}}
-                            placeholder='Enter "City, Country Code (e.g UK)" or "U.S. ZIP Code"'
+                            placeholder='Enter a City, U.S. ZIP Code, or Coordinates'
                             autoFocus={true}
                         />
                     </Col>

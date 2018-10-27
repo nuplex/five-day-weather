@@ -6,8 +6,9 @@
     /** GRAYSCALE **/
     --white: #FFF;
     --white-bg: #FDFDFD;
-    --gray-lighter: #F2F2F2;
-    --gray-light: #DFDFDF;
+    --gray-lightest: #F2F2F2;
+    --gray-lighter: #DFDFDF;
+    --gray-light: #a6a6a6;
     --gray: #888;
     --gray-dark: #474647;
     --black: #333;
@@ -20,7 +21,9 @@
     --blue-dark: #3064f2;
     --blue-darker: #244AB3;
 
+    --yellow-bg: #fff5e6;
     --yellow: #EFC654;
+    --yellow-dark: #ba9a43;
 
     --red: #FF5964;
 }

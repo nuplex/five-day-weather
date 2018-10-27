@@ -1,6 +1,6 @@
 .location-input {
     border: none;
-    border-bottom: 1px solid  var(--gray-light);
+    border-bottom: 1px solid  var(--gray-lighter);
     width: 100%;
     min-height: calc(100% - 3px); /* keeps border inline with button */
     font-size: var(--font-size-xl);
@@ -10,7 +10,7 @@
 }
 
 .location-input:focus {
-    border-bottom: 1px solid var(--gray );
+    border-bottom: 1px solid var(--gray-light);
     color: var(--blue);
 }
 
@@ -18,7 +18,7 @@
 .location-input::-webkit-input-placeholder,
 .location-input:-ms-input-placeholder,
 .location-input::placeholder {
-    color: var(--gray-light);
+    color: var(--gray-lighter);
 }
 
 .location-submit-btn {
