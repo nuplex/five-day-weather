@@ -59,11 +59,11 @@
 }
 
 .weather-info--today,
-.weather-info--today .wi-sendDetails-btn {
+.weather-info--today .wi-showDetails-btn {
     background: var(--yellow-bg);
 }
 
-.weather-info--today .wi-sendDetails-btn,
+.weather-info--today .wi-showDetails-btn,
 .weather-info--today .temp--high {
     color: var(--yellow-dark);
 }
@@ -75,7 +75,7 @@
 /* Below the medium width, data is hard to read without a background on the info*/
 @media only screen and (max-width: 48em) {
     .weather-info,
-    .weather-info .wi-sendDetails-btn {
+    .weather-info .wi-showDetails-btn {
         background: var(--gray-lightest);
     }
 
@@ -91,7 +91,21 @@
 
 }
 
-.wi-sendDetails-btn {
+.wi-details {
+    margin: 2px;
+}
+
+.wi-details span{
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-sm);
+    color: var(--gray);
+}
+
+.wi-mph{
+    font-size: calc(var(--font-size-sm) - 3px) !important;
+}
+
+.wi-showDetails-btn {
     border: none;
     font-size: var(--font-size-sm);
     line-height: var(--line-height-sm);

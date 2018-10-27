@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {Grid, Row, Col} from "react-flexbox-grid";
 import WeatherInfo from "../WeatherInfo/WeatherInfo";
@@ -6,37 +6,7 @@ import WeatherInfo from "../WeatherInfo/WeatherInfo";
 /**
  * Holds the five combined WeatherInfo's to display a forecast.
  */
-class FiveDayWeatherInfo extends PureComponent {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            showingDetails: false,
-            detailsToShow: null,
-        };
-
-        this.showDetails = this.showDetails.bind(this);
-        this.sendError = this.sendError.bind(this);
-    }
-
-    sendError(msg){
-        this.props.sendError(msg);
-    }
-
-    showDetails(details){
-        this.setState({
-            showingDetails: true,
-            detailsToShow: details
-        })
-    }
-
-    render() {
-        const {
-            weatherData,
-            degConvert,
-            degSystem
-        } = this.props;
-
+function FiveDayWeatherInfo({weatherData, degConvert}){
         return (
             <div className="fdw-cont">
                 {weatherData && weatherData.days &&
@@ -48,9 +18,7 @@ class FiveDayWeatherInfo extends PureComponent {
                                       <WeatherInfo
                                           day={day}
                                           index={index}
-                                          sendDetails={(details) => (this.showDetails(details))}
                                           degConvert={(deg) => degConvert(deg)}
-                                          degSystem={degSystem}
                                       />
                                   </Col>
                               )
@@ -60,13 +28,10 @@ class FiveDayWeatherInfo extends PureComponent {
                 }
             </div>
         )
-    }
 }
 
 FiveDayWeatherInfo.propTypes = {
     weatherData: PropTypes.shape({}).isRequired,
-    /* Sends the Error to GetFiveDayWeather to Display*/
-    sendError: PropTypes.func,
     /* converts the degrees */
     degConvert: PropTypes.func.isRequired,
 };

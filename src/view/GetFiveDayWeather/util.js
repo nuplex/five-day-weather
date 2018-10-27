@@ -158,6 +158,8 @@ const getKeyData = (data) => {
                 weatherData: currDayPoint.weather[0],//is sn array for some reason
                 /* excess information, also gathered at noon, from 'main' */
                 details: currDayPoint.main,
+                windDetails: currDayPoint.wind,
+                cloudsDetails: currDayPoint.clouds,
                 /* for easy access later */
                 dateObject: currDate,
             };
