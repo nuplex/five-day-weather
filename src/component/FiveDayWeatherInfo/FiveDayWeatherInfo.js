@@ -40,6 +40,7 @@ class FiveDayWeatherInfo extends PureComponent {
                                   <Col xs={12} sm={12} md={4} lg={2}>
                                       <WeatherInfo
                                           day={day}
+                                          index={index}
                                           sendDetails={this.showDetails}
                                       />
                                   </Col>

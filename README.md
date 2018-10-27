@@ -33,28 +33,97 @@ To end the program, in your terminal press `CTRL + C`
 #### Testing
 To run the unit tests, do `npm run test`.
 
+## Thought Process
+
+Before I started coding:
+1. Carefully read over the specifications. I read over each part and thought about how
+to do it with my given experience. It did not seem initially like much work.
+2. Research and test the API, understand the returned data. Finding out that there is no actual purely 'five-day' data 
+returned increased the amount of work considerably. (Going from just showing, to parsing then showing).
+3. Determine what framework and library to use. React, to me, is best if I want to start quickly, so I chose it. I've 
+explained why I used certain libraries below. A CSS-Preprocessors was not used because the estimated size of the  
+application was small.
+4. Determine the pure-MVP (project specification taken at face value), and my personal MVP, and resolve which features 
+to implement based  how a typical forecast app would function.
+5. Think and plan out the UI. I decided to make my own icons at this stage since it would be fairly quick.
+6. Initialize the project, create directories. Create empty component folders so I know what components I will want.
+7. Think of fail-states for each component. What would be considered 'passing'?
+8. Start coding! Code, view, test, code, repeat.
+9. Discussed below is trade-off. Determining when to shelve something or to keep working on it is a constant decision.
+
+
+## Trade-offs
+The main trade-offs were between:
+- time
+- mvp-factor
+- polish
+
+##### Time
+Many of the wanted enhancements started out as things I wanted in the app when I first started, however after learning more 
+about what OWM's API was capable of (or not), and what type of data it returned, I realized that
+for the sake of time they could not implemented. 
+
+##### MVP-Factor
+The minimum viable product factor is how important a feature is to 
+the given requirements of the project. Taking it at face-value, the MVP here would have been to have a single component 
+get the data for a random city, or perhaps the current location, and display it. No inputs. However this wouldn't be much
+of an application.
+
+##### Polish
+So the juggling those two factors results in knowing what to polish and what not to. Being able to enter a location by city,
+zip code, and lat-long is a basic enough feature. The application using a minimalistic design instead of barebones HTML is
+enough in-terms of polish.
+
+##### All-together now
+Essentially, these led to:
+- Refactoring the UI only when it was clearly clunky and unappealing.
+- If a feature was non-mvp and was beyond what would be considered adequate-polish, and would take more than an hour or 
+two to implement and test, it got tacked onto the 'Wanted Enhancements' list.
+
 ## Features
 
 ### Location Input
 
-### Find Based off My Location
+Type in a city, lat-long, or zip code, press Enter or 'Look Up!', and the forecast for that location
+is returned.
 
-#### Enhancement - Autofill Input Bar
+##### Wanted Enhancement - Support Non-US Zip Codes
+OWM is capable of returning data for these (zip code + country code), however figuring out the regex is a different 
+story since zip-codes in other countries can have many different formats.
+
+### Look Me Up Button
+
+Click the 'Look Me Up' button to get the forecast for your location, without inputting a thing.
+
+##### Wanted Enhancement - Autofill Input Bar
 
 This a button that simply gives OWM your lat-long and gives back the weather for
-the closest city to you. It would be better to have this fill into the bar. However one we need to be able to resolve
-this. This can be done by matching lat-long with the OWM bulk download of cities.
+the closest city to you. It would be better to have this fill into the bar. This can be done by matching lat-long with 
+the OWM bulk download of cities.
+
+### View Weather Details
+
+By clicking 'View Details', the app can display more data than the average user may need.
+
+
+### F°/C° Toggle
+
+Click either 'F°'/'C°' toggle and the app will change the temperatures to that system.
+
+##### Note
+OWM by default returns temperatures in degrees Kelvin, but can return them in F°/C° as well if added to the query. 
+However it would be slow to make a new query everytime these were switched, it's better to calculate them on the fly.
 
 ### Custom Weather Icons!
 
 I made the Weather Icons myself! I didn't want to use stock photos, and frankly OWM's icons are a bit dated.
 
-#### Wanted Enhancement - More Icons
+##### Wanted Enhancement - More Icons
 
 There are many different weather conditions grouped under one category or one icon, it would be good to have more 
 unique icons for each condition.
 
-#### Wanted Enhancement - SVG Minify
+##### Wanted Enhancement - SVG Minify
 
 The SVGs could be run through a minifier like SVGOMG, they likely are larger than they need to be.
 
@@ -110,8 +179,6 @@ a directory and there are 100 unorganized files in there, or single files contai
 relevant parts inside their own directories, e.g. components having their util functions, tests, and CSS in their directory.
 For a small project, this level of organization isn't necessary, however it's always goo to keep
 scalability of organization in mind.
-
-## Trade-offs
 
 ## Known Bugs
 - The regular expressions governing the location input likely does not cover all
