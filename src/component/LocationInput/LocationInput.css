@@ -1,4 +1,14 @@
-.locate-me-btn {
+.fmt-help {
+    display: inline-block;
+    margin-top: 2px;
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-sm);
+    color: var(--gray);
+    float: left;
+}
+
+.locate-me-btn,
+.toggle-fmt-btn {
     border: none;
     text-decoration: underline;
     margin-top: 2px;
@@ -11,7 +21,8 @@
     float: left;
 }
 
-.locate-me-btn:hover {
+.locate-me-btn:hover,
+.toggle-fmt-btn:hover {
     color: var(--blue-light);
 }
 
@@ -57,9 +68,14 @@
         margin-top: 8px;
     }
 
+    .location-input {
+        min-height: 0; /* keeps border inline with button */
+    }
+
     .location-input-cont {
         margin-bottom: 8px;
     }
+
 }
 
 .location-submit-btn:hover {

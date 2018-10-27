@@ -18,7 +18,7 @@ class WeatherDetails extends PureComponent {
             <React.Fragment>
             {show &&
                 <div>
-
+                    
                 </div>
             }
             </React.Fragment>

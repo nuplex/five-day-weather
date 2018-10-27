@@ -16,13 +16,17 @@ class LocationInput extends PureComponent {
             /* If already checked that prop.location matches value.
             *  If we don't check it'll get stuck in a loop of updating
             *  in getDerivedStateFromProps */
-            alreadyChecked: false
-        };
+            alreadyChecked: false,
+            showFormattingHelp: false,
+            formattingHelpText: 'City: [City] or [City],[Country Code] | Zip: 5 Digits | Coordinates: +/-[Num]+/-[Num]'
+
+    }
 
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.sendError = this.sendError.bind(this);
         this.onLocateMe = this.onLocateMe.bind(this);
+        this.toggleFormattingHelp = this.toggleFormattingHelp.bind(this);
     }
 
    static getDerivedStateFromProps(props, state){
@@ -90,8 +94,19 @@ class LocationInput extends PureComponent {
         this.props.sendError(msg);
     }
 
+    toggleFormattingHelp(){
+        const toggled = !this.state.showFormattingHelp;
+        this.setState({
+            showFormattingHelp: toggled
+        })
+    }
+
     render(){
-        const { value } = this.state;
+        const {
+            value,
+            showFormattingHelp,
+            formattingHelpText
+        } = this.state;
 
         return (
             <Grid fluid>
@@ -112,6 +127,13 @@ class LocationInput extends PureComponent {
                         >
                             Locate Me
                         </button>
+                        <button
+                            className="toggle-fmt-btn"
+                            onClick={this.toggleFormattingHelp}
+                        >
+                            Formatting Help
+                        </button>
+                        {showFormattingHelp && <span className="fmt-help">{formattingHelpText}</span>}
                     </Col>
                     <Col xs={12} sm={3} md={3} lg={3}>
                         <button
