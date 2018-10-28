@@ -40,7 +40,6 @@ If testing lat/lon: [Issue with OpenWeatherMap Latitude/Longitude Query](https:/
 |library|reason|
 |---|---|
 |express| The app's server, router to handle REST APIs|
-|gh-pages| Allows the app to be hosted on github|
 |path| Solely for __dirname which resolves the local directory |
 |prop-types| Provides PropTypes to components, helpful for keeping track of props|
 |react|The framework used|
