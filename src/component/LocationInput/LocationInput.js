@@ -20,7 +20,7 @@ class LocationInput extends PureComponent {
             showFormattingHelp: false,
             formattingHelpText: 'City: [City] or [City],[Country Code] | Zip: 5 Digits | Coordinates: +/-[Num]+/-[Num]'
 
-    }
+    };
 
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -69,7 +69,7 @@ class LocationInput extends PureComponent {
     }
 
     onLocateMe(){
-        this.props.sendLoadingRequest(true); //will be turned off later
+        this.props.sendLoadingRequest(true); //will be turned off later by the parent component
         this.setState({
            alreadyChecked: false
         });

@@ -113,8 +113,6 @@ class GetFiveDayWeather extends PureComponent {
             degSystem = 'K';
         }
 
-
-
         this.setState({
             currentDegree: degSystem,
             currentDegConvert: degConvFunc,

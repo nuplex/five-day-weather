@@ -1,13 +1,8 @@
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="512px"
-	 height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
-<g id="Layer_2">
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512">
 	<circle fill="#EFC654" cx="256.728" cy="255.727" r="155.3"/>
-</g>
-<g id="Layer_3">
-	<g>
-		<ellipse fill="#E6E6E6" cx="94.312" cy="373.263" rx="55.78" ry="53.766"/>
-		<ellipse fill="#E6E6E6" cx="292.312" cy="373.263" rx="55.78" ry="53.766"/>
-		<rect x="94" y="319" fill="#E6E6E6" width="198" height="108"/>
+	<g fill="#E6E6E6">
+		<ellipse cx="94.312" cy="373.263" rx="55.78" ry="53.766"/>
+		<ellipse cx="292.312" cy="373.263" rx="55.78" ry="53.766"/>
+		<path d="M94 319h198v108H94z"/>
 	</g>
-</g>
 </svg>

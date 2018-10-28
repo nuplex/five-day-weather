@@ -1,38 +1,37 @@
-<svg version="1.1" id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="512px" height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
-<g>
-	<ellipse fill="#ADADAD" cx="108.183" cy="201.546" rx="8.906" ry="7.454"/>
-	<ellipse fill="#ADADAD" cx="404.655" cy="201.546" rx="8.906" ry="7.454"/>
-	<rect x="108" y="194" fill="#ADADAD" width="296" height="15"/>
-</g>
-<g>
-	<ellipse fill="#ADADAD" cx="108.183" cy="231.546" rx="8.906" ry="7.454"/>
-	<ellipse fill="#ADADAD" cx="404.655" cy="231.546" rx="8.906" ry="7.454"/>
-	<rect x="108" y="224" fill="#ADADAD" width="296" height="15"/>
-</g>
-<g>
-	<ellipse fill="#ADADAD" cx="108.183" cy="261.547" rx="8.906" ry="7.453"/>
-	<ellipse fill="#ADADAD" cx="404.655" cy="261.547" rx="8.906" ry="7.453"/>
-	<rect x="108" y="254" fill="#ADADAD" width="296" height="15"/>
-</g>
-<g>
-	<ellipse fill="#ADADAD" cx="108.183" cy="291.547" rx="8.906" ry="7.453"/>
-	<ellipse fill="#ADADAD" cx="404.655" cy="291.547" rx="8.906" ry="7.453"/>
-	<rect x="108" y="284" fill="#ADADAD" width="296" height="15"/>
-</g>
-<g>
-	<ellipse fill="#ADADAD" cx="108.183" cy="321.547" rx="8.906" ry="7.453"/>
-	<ellipse fill="#ADADAD" cx="404.655" cy="321.547" rx="8.906" ry="7.453"/>
-	<rect x="108" y="314" fill="#ADADAD" width="296" height="15"/>
-</g>
-<g>
-	<ellipse fill="#ADADAD" cx="108.183" cy="351.547" rx="8.906" ry="7.453"/>
-	<ellipse fill="#ADADAD" cx="404.655" cy="351.547" rx="8.906" ry="7.453"/>
-	<rect x="108" y="344" fill="#ADADAD" width="296" height="15"/>
-</g>
-<g>
-	<ellipse fill="#E6E6E6" cx="108.183" cy="171.546" rx="8.906" ry="7.454"/>
-	<ellipse fill="#E6E6E6" cx="404.655" cy="171.546" rx="8.906" ry="7.454"/>
-	<rect x="108" y="164" fill="#E6E6E6" width="296" height="15"/>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512">
+	<g fill="#ADADAD">
+		<ellipse cx="108.183" cy="201.546" rx="8.906" ry="7.454"/>
+		<ellipse cx="404.655" cy="201.546" rx="8.906" ry="7.454"/>
+		<path d="M108 194h296v15H108z"/>
+	</g>
+	<g fill="#ADADAD">
+		<ellipse cx="108.183" cy="231.546" rx="8.906" ry="7.454"/>
+		<ellipse cx="404.655" cy="231.546" rx="8.906" ry="7.454"/>
+		<path d="M108 224h296v15H108z"/>
+	</g>
+	<g fill="#ADADAD">
+		<ellipse cx="108.183" cy="261.547" rx="8.906" ry="7.453"/>
+		<ellipse cx="404.655" cy="261.547" rx="8.906" ry="7.453"/>
+		<path d="M108 254h296v15H108z"/>
+	</g>
+	<g fill="#ADADAD">
+		<ellipse cx="108.183" cy="291.547" rx="8.906" ry="7.453"/>
+		<ellipse cx="404.655" cy="291.547" rx="8.906" ry="7.453"/>
+		<path d="M108 284h296v15H108z"/>
+	</g>
+	<g fill="#ADADAD">
+		<ellipse cx="108.183" cy="321.547" rx="8.906" ry="7.453"/>
+		<ellipse cx="404.655" cy="321.547" rx="8.906" ry="7.453"/>
+		<path d="M108 314h296v15H108z"/>
+	</g>
+	<g fill="#ADADAD">
+		<ellipse cx="108.183" cy="351.547" rx="8.906" ry="7.453"/>
+		<ellipse cx="404.655" cy="351.547" rx="8.906" ry="7.453"/>
+		<path d="M108 344h296v15H108z"/>
+	</g>
+	<g fill="#E6E6E6">
+		<ellipse cx="108.183" cy="171.546" rx="8.906" ry="7.454"/>
+		<ellipse cx="404.655" cy="171.546" rx="8.906" ry="7.454"/>
+		<path d="M108 164h296v15H108z"/>
+	</g>
 </svg>

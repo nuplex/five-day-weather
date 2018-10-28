@@ -1,45 +1,30 @@
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="512px"
-	 height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
-<g id="Layer_2">
-	<g>
-		<ellipse fill="#ADADAD" cx="157.312" cy="256.263" rx="55.78" ry="53.766"/>
-		<ellipse fill="#ADADAD" cx="355.312" cy="256.263" rx="55.78" ry="53.766"/>
-		<rect x="157" y="202" fill="#ADADAD" width="198" height="108"/>
-	</g>
-	<g>
-		<ellipse fill="#ADADAD" cx="225.312" cy="199.263" rx="55.78" ry="53.766"/>
-		<ellipse fill="#ADADAD" cx="423.312" cy="199.263" rx="55.78" ry="53.766"/>
-		<rect x="225" y="145" fill="#ADADAD" width="198" height="108"/>
-	</g>
-</g>
-<g id="Layer_3">
-	<g>
-		<ellipse fill="#E6E6E6" cx="94.312" cy="322.263" rx="55.78" ry="53.766"/>
-		<ellipse fill="#E6E6E6" cx="292.312" cy="322.263" rx="55.78" ry="53.766"/>
-		<rect x="94" y="268" fill="#E6E6E6" width="198" height="108"/>
-	</g>
-	<g>
-		<ellipse fill="#E6E6E6" cx="182.312" cy="283.263" rx="55.78" ry="53.766"/>
-		<ellipse fill="#E6E6E6" cx="380.312" cy="283.263" rx="55.78" ry="53.766"/>
-		<rect x="182" y="229" fill="#E6E6E6" width="198" height="108"/>
-	</g>
-</g>
-<g id="Layer_4">
-	<g>
-		
-			<line fill="#EDCC40" stroke="#EDCC40" stroke-width="27" stroke-miterlimit="10" x1="173.15" y1="330.028" x2="156.331" y2="406.049"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512">
+	<g fill="#ADADAD">
+		<ellipse cx="157.312" cy="256.263" rx="55.78" ry="53.766"/>
+		<ellipse cx="355.312" cy="256.263" rx="55.78" ry="53.766"/>
+		<path d="M157 202h198v108H157z"/>
 		<g>
-			<line fill="#EDCC40" x1="177.196" y1="379.606" x2="152.942" y2="463.617"/>
-			<polygon fill="#EDCC40" points="194.01,384.461 152.942,463.617 160.383,374.752 			"/>
+			<ellipse cx="225.312" cy="199.263" rx="55.78" ry="53.766"/>
+			<ellipse cx="423.312" cy="199.263" rx="55.78" ry="53.766"/>
+			<path d="M225 145h198v108H225z"/>
 		</g>
 	</g>
-	<g>
-		
-			<line fill="#EDCC40" stroke="#EDCC40" stroke-width="27" stroke-miterlimit="10" x1="279.474" y1="328.063" x2="259.889" y2="416.583"/>
+	<g fill="#E6E6E6">
+		<ellipse cx="94.312" cy="322.263" rx="55.78" ry="53.766"/>
+		<ellipse cx="292.312" cy="322.263" rx="55.78" ry="53.766"/>
+		<path d="M94 268h198v108H94z"/>
 		<g>
-			<line fill="#EDCC40" x1="284.185" y1="385.793" x2="255.942" y2="483.617"/>
-			<polygon fill="#EDCC40" points="300.998,390.647 255.942,483.617 267.371,380.938 			"/>
+			<ellipse cx="182.312" cy="283.263" rx="55.78" ry="53.766"/>
+			<ellipse cx="380.312" cy="283.263" rx="55.78" ry="53.766"/>
+			<path d="M182 229h198v108H182z"/>
 		</g>
 	</g>
-</g>
+	<g fill="#EDCC40">
+		<path stroke="#EDCC40" stroke-width="27" stroke-miterlimit="10" d="M173.15 330.028l-16.819 76.021"/>
+		<path d="M177.196 379.606l-24.254 84.011M194.01 384.461l-41.068 79.156 7.441-88.865z"/>
+		<g>
+			<path stroke="#EDCC40" stroke-width="27" stroke-miterlimit="10" d="M279.474 328.063l-19.585 88.52"/>
+			<path d="M284.185 385.793l-28.243 97.824M300.998 390.647l-45.056 92.97 11.429-102.679z"/>
+		</g>
+	</g>
 </svg>
