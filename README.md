@@ -7,7 +7,7 @@ the app will locate you. That's all!
 
 #### create-react-app
 This app was initialized with create-react-app. While create-react-app does come with some boilerplate, it is great for 
-quickly starting small applications like this where modifications to build folders (e.g. bable, webpack), are not 
+quickly starting small applications like this where modifications to build folders (e.g. babel, webpack), are not 
 necessary. If ever needed, an `npm run eject` allows access to all files and configurations.
 
 ## Get Started
@@ -40,6 +40,7 @@ If testing lat/lon: [Issue with OpenWeatherMap Latitude/Longitude Query](https:/
 |library|reason|
 |---|---|
 |express| The app's server, router to handle REST APIs|
+|gh-pages| Allows the app to be hosted on github|
 |path| Solely for __dirname which resolves the local directory |
 |prop-types| Provides PropTypes to components, helpful for keeping track of props|
 |react|The framework used|

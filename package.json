@@ -1,9 +1,11 @@
 {
   "name": "five-day-weather",
   "version": "0.1.0",
+  "homepage": "https://nuplex.github.io/five-day-weather/",
   "private": true,
   "dependencies": {
     "express": "^4.16.4",
+    "gh-pages": "^2.0.1",
     "path": "^0.12.7",
     "prop-types": "^15.6.2",
     "react": "^16.6.0",
@@ -20,6 +22,8 @@
     "postinstall": "npm run build",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
