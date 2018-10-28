@@ -3,7 +3,7 @@ const path = require('path');
 
 const app = express();
 
-const port = process.env.PORT || 32278; //on a dialpad, this is 'F C A S T' (forecast)
+const port = process.env.PORT || 8080;
 
 //routes is where the api calls will exist
 app.use(require('./routes'));

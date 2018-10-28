@@ -23,7 +23,7 @@ To build and run the app:
 4. Do `npm install`
 5. Then `npm run build`
 6. Then `npm run start` (or `node server` to run only the `/build` folder)
-7. Navigate to `localhost:3000` or `localhost:8080`
+7. Navigate to `localhost:3000` or `localhost:32278`
 8. There's the app! 
 
 If you ran `npm run start`, nodemon is installed and will live-update changes to the project.
@@ -31,7 +31,7 @@ If you ran `npm run start`, nodemon is installed and will live-update changes to
 To end the program, in your terminal press `CTRL + C`
 
 #### Testing
-To run the unit tests, do `npm run test`. All test files are called or end in `spec.js` 
+To run the unit tests, do `npm run test`. All test files are called `spec.js` in their respective directories.
 
 If testing lat/lon: [Issue with OpenWeatherMap Latitude/Longitude Query](https://github.com/nuplex/five-day-weather#other-issues)
 
