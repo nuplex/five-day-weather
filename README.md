@@ -277,8 +277,7 @@ it being initially hidden by `Formatting Help`.
 `Number.MIN_VALUE` and `Number.MAX_VALUE` before being set into a `day` object. But they are these values sometimes if 
 there is only one data point for a day. The app sets these to `temp_min` and `temp_max` if this happens, which while 
 adequate is not ideal.
-- May need to improve error-handling. Messages may be too generic. Some errors handled with an extra console log, 
-but could instead utilize `Error` with a custom message.
+- May need to improve error-handling. Messages may be too generic.
 
 ## Other Issues
 ### OpenWeatherMap Latitude/Longitude Query

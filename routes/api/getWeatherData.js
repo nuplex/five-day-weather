@@ -60,13 +60,11 @@ router.get('/getFiveDay', (req, res) => {
                 }
             });
         } else {
-            res.status(400);
             res.json({
                 error: 'Lat-Long was not formatted properly'
             });
         }
     } else {
-        res.status(400);
         res.json({
             error: 'Query was invalid'
         })

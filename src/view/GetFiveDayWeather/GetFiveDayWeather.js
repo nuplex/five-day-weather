@@ -64,9 +64,8 @@ class GetFiveDayWeather extends PureComponent {
                     });
                 }
             })
-            .catch((err) => {
+            .catch(() => {
                 ///if it fails show an error
-                console.log(err);
                 this.setState({
                     isLoading: false
                 }, this.displayError(STOCK_ERRORS.FORECAST_FAILUE));
