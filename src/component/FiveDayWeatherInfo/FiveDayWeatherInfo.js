@@ -8,7 +8,7 @@ import WeatherInfo from "../WeatherInfo/WeatherInfo";
  */
 function FiveDayWeatherInfo({weatherData, degConvert}){
         return (
-            <div className="fdw-cont">
+            <div>
                 {weatherData && weatherData.days &&
                     <Grid fluid>
                         <Row xs={12} center="xs">

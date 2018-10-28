@@ -12,3 +12,16 @@
     line-height: var(--line-height-xl);
     color: var(--gray-dark);
 }
+
+.gfdw-title {
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-sm);
+    text-transform: uppercase;
+    color: var(--gray-title);
+    padding-left: 15px;
+}
+
+.gfdw-title-cont {
+    text-align: left;
+    margin-top: -20px;
+}

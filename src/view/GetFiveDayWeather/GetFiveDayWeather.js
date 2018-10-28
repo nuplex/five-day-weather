@@ -143,6 +143,11 @@ class GetFiveDayWeather extends PureComponent {
             <div className="gfdw-cont">
                 <Grid fluid>
                     <Row center="xs">
+                        <Col md={12} lg={10} className="gfdw-title-cont">
+                            <span className="gfdw-title">Your Five Day Forecast</span>
+                        </Col>
+                    </Row>
+                    <Row center="xs">
                         <Col md={12} lg={10}>
                             <LocationInput
                                 getWeatherData={(loc) => (this.getWeatherData(loc))}

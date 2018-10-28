@@ -49,7 +49,7 @@
     text-align: center;
     background: var(--white-bg);
     padding: 8px;
-    min-width: 128px; /* at least bigger than the icon */
+    min-width: 112px; /* at least bigger than the icon */
 }
 
 .weather-info p,

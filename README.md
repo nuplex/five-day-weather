@@ -31,7 +31,7 @@ If you ran `npm run start`, nodemon is installed and will live-update changes to
 To end the program, in your terminal press `CTRL + C`
 
 #### Testing
-To run the unit tests, do `npm run test`.
+To run the unit tests, do `npm run test`. All test files are called or end in `spec.js` 
 
 If testing lat/lon: [Issue with OpenWeatherMap Latitude/Longitude Query](https://github.com/nuplex/five-day-weather#other-issues)
 
@@ -48,6 +48,8 @@ If testing lat/lon: [Issue with OpenWeatherMap Latitude/Longitude Query](https:/
 |react-scripts|Installed by create-react-app|
 |request|Used to make  HTTP requests|
 |url-parse|Cross-browser way to get queries from a url without writing own regexs|
+|enzyme|Unit testing framework|
+|enzyme-adapter-react-16|Makes enzyme work with React 16|
 |nodemon|Live-updates changes to code (react-scripts does this *only* for `/src`)|
 |npm-run-all|Allow `npm run start` to start multiple scripts|
 
@@ -64,6 +66,7 @@ If testing lat/lon: [Issue with OpenWeatherMap Latitude/Longitude Query](https:/
 |src/res|Project resources like css and images|
 |src/res/css|CSS that applies to multiple components, or global tags|
 |src/res/img|Images and icons|
+|src/util|General scripts|
 |src/view|Contains components that are view-like, in that they essentially function as pages. There is only one in this application.
 |src/view/*|See `src/component/*`|
 

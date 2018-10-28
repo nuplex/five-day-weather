@@ -27,7 +27,7 @@ const formatCityCountry = (locationString) => {
     const cityCountryRE = /\s*([A-Za-z]*(?:\s*[A-Za-z]*)*)\s*(?:,+\s*([A-Za-z]{2,3}))*/g;
     const matches = cityCountryRE.exec(locationString);
     //get rid of all spacing anywhere EXCEPT in city names (e.g. New York)
-    const cityToken = matches[1].replace(/\s+\s*/g,' ').replace(/\s/g,'+'); //OWM uses '+' for space
+    const cityToken = matches[1].trim().replace(/\s+\s*/g,' ').replace(/\s/g,'+'); //OWM uses '+' for space
     const countryToken = matches[2];
 
     return `${cityToken}${countryToken ? ','+countryToken:''}`;
@@ -153,8 +153,9 @@ const getKeyData = (data) => {
         if(nextDayTimeIsDiffDay || lastDayTime) {
             /* now it's time to push the final day object */
             let day = {
-                high: currHigh,
-                low: currLow,
+                high: (currHigh === Number.MIN_VALUE ? dayTime.main.temp_max:currHigh),
+                low: (currLow === Number.MAX_VALUE ? dayTime.main.temp_min:currLow),
+                //The above is in case it is late enough in the day that currHigh and currLow could not be calculated
                 weatherData: currDayPoint.weather[0],//is sn array for some reason
                 /* excess information, also gathered at noon, from 'main' */
                 details: currDayPoint.main,
@@ -179,4 +180,4 @@ const getKeyData = (data) => {
     return desired;
 };
 
-export {getForecast};
+export { getForecast, getKeyData, resolveInputType, formatCityCountry };
