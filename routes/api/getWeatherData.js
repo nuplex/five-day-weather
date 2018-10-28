@@ -26,9 +26,9 @@ router.get('/getFiveDay', (req, res) => {
                 append = (() => {
                     //quick parsing
                     let latlong = '';
-                    const latlonRE = /([+-]?[0-9]{1,3}(?:\.[0-9]+)?)/g;
+                    const latlonRE = /([+-][0-9]{1,3}(?:\.[0-9]+)?)/g;
                     const matches = loc.match(latlonRE);
-                    if(matches.length < 2){
+                    if(!matches || matches.length < 2){
                         latlong ='__EXIT_L'
                     } else {
                         /* OWM is NOT a fan of the '+', it will sometimes take it

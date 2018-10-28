@@ -52,7 +52,7 @@ const getForecast = async (locationString) => {
             formatted = locationString.trim();
             break;
         case 'latlong':
-            formatted = locationString.trim();
+            formatted = locationString.trim().replace(/\+/g,'%2B'); //encode the '+''s
             //latlong will be parsed into separate args server side (results in less conditional logic)
             break;
     }
@@ -80,6 +80,12 @@ const getForecast = async (locationString) => {
             }
         }
     } else {
+        if(data.error && type === 'latlong'){
+            return {
+                error: data.error,
+                errorCode: '404'
+            }
+        }
         throw Error('data or data.cod was undefined');
     }
     const keyData = getKeyData(data);

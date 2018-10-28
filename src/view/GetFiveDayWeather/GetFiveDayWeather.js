@@ -156,9 +156,12 @@ class GetFiveDayWeather extends PureComponent {
                                 emptyParentLocation={() => (this.setState({currentLocation:''}))}
                             />
                         </Col>
-                        {!hasError && !isLoading && weatherData && weatherData.city && weatherData.country &&
+                        {!hasError && !isLoading && weatherData && weatherData.city &&
                             <Col xs={12} lg={10}>
-                                <p className="gfdw-loc-title">{weatherData.city}, {weatherData.country}</p>
+                                <p className="gfdw-loc-title">
+                                    {weatherData.city}
+                                    {weatherData.country && `, ${weatherData.country}`}
+                                </p>
                             </Col>
                         }
                         <Col xs={12} lg={10}>

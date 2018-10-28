@@ -27,7 +27,7 @@ To build and run the app:
 4. Do `npm install`
 5. Then `npm run build`
 6. Then `npm run start` (or `node server` to run only the `/build` folder)
-7. Navigate to `localhost:3000` or `localhost:32278`
+7. Navigate to `localhost:3000` (or `localhost:8080`, this is the server, it also serves `/build`)
 8. There's the app! 
 
 If you ran `npm run start`, nodemon is installed and will live-update changes to the project.
@@ -149,7 +149,7 @@ two to implement and test, it got tacked onto the 'Wanted Enhancements' list.
 
 ### Location Input
 
-Type in a city ([City] or [City],[Country]), coordinates (+/-000000+/-00000), or a U.S. zip code (00000), then press 
+Type in a city ([City] or [City],[Country]), coordinates [+/-00(.00)+/-00(.00)], or a U.S. zip code [00000], then press 
 Enter or the 'Look Up!' button, and the forecast for that location is returned.
 
 ##### Wanted Enhancement - Support Non-US Zip Codes
@@ -256,8 +256,7 @@ See: [Issue with OpenWeatherMap Latitude/Longitude Query](https://github.com/nup
 - The high and low temperature calculation may be off in certain situations. 
 See: [Tech Debt](https://github.com/nuplex/five-day-weather#tech-debt)
 - The regular expression governing the location input likely does not cover all input scenarios.
-- There may be unhandled edge-case errors that I missed that result in a crash.
-  
+    
 ## Quirks
 - The closer you get to the end of the day, the closer the highs and lows get for `Today`, until they are the same. 
 This is due to less data being available for the current day. Some apps, like The Weather Channel, do not display highs 
@@ -278,35 +277,16 @@ it being initially hidden by `Formatting Help`.
 `Number.MIN_VALUE` and `Number.MAX_VALUE` before being set into a `day` object. But they are these values sometimes if 
 there is only one data point for a day. The app sets these to `temp_min` and `temp_max` if this happens, which while 
 adequate is not ideal.
+- May need to improve error-handling. Messages may be too generic. Some errors handled with an extra console log, 
+but could instead utilize `Error` with a custom message.
 
 ## Other Issues
 ### OpenWeatherMap Latitude/Longitude Query
-OWM's API is very inconsistent with what it considers a valid input for latitude and longitude, identical inputs 
-can succeed or fail, namely with the error `X is not a float`. After trial and error, I found part of the issue was due 
-to how close the lat/lon was to one of their preset points. It returns this error **even if the number is a float** or
-even if it is a **valid location**. This also means `Locate Me` will sometimes not work. The only solution would be
-to implement an in-between on my side that uses their bulk city data, finds which point is closest to the passed in lat/lon,
-and passes that instead.
-
-This bug is also connected to having a `+` present before a coordinate (e.g `lat=+35.07`). However it is not consistent. 
-Sometimes it will allow the `+` other times it will not. I could not figure out what the conditions we're, 
-so I removed `+` from my queries. (It is still needed when typing in coordinates in this app however)
-
-**Examples:**
-
-- Eiffel Tower (lat=+48.8584&lon=+2.2945)
-- My Town Location (lat=+40.5687695&lon=+74.6150385)
-
-It also seems that if a query fails, but you remove the `+` and it (maybe) works, it works after that regardless of `+` 
-being there or not. When I first put Eiffel Tower in, it did not work with `+`, after removing the `+`, it did, and now 
-it ~~works with either.~~ still works inconsistently. 
-
-Precision is also a contributing issue, though it is widely inconsistent, since the API can return successes and errors 
-both for whole numbers and high precision floats.
+OWM's API is sometimes inconsistent with what it considers a valid input for latitude and longitude, identical inputs 
+can succeed or fail, namely with the error `X is not a float`. I don't know the steps to consistently reproduce this 
+error. It's seemingly random when it occurs. Precision of the float seems to have some impact, or the location of the 
+actual coordinates. The best coordinates to test with are those right on top of major cities.
 
 I verified this inconsistent behaviour with [Postman](https://www.getpostman.com/), an application that lets you quickly 
 edit and send requests to APIs and view the responses.
-
-I do not know the steps to consistently reproduce this error. It is seemingly random when it occurs. The best 
-coordinates to test with are those right on top of major cities.
 
