@@ -23,7 +23,7 @@ To build and run the app:
 4. Do `npm install`
 5. Then `npm run build`
 6. Then `npm run start` (or `node server` to run only the `/build` folder)
-7. Navigate to `localhost:3000` or `localhost:33278`
+7. Navigate to `localhost:3000` or `localhost:8080`
 8. There's the app! 
 
 If you ran `npm run start`, nodemon is installed and will live-update changes to the project.
