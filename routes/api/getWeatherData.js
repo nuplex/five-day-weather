@@ -3,6 +3,9 @@ const request = require('request');
 const parse = require('url-parse');
 const API_KEY = '22ba3dd23a029dcd9676c949717a059e';
 
+/**
+ * This route handles calls to OpenWeatherMap, for now, just their fiveDayWeather.
+ */
 router.get('/getFiveDay', (req, res) => {
     const url = new parse(req.originalUrl, {}, true);
     const query = url.query;

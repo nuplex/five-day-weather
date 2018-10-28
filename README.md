@@ -251,6 +251,13 @@ especially when dealing with responsiveness) as a trade-off.
 
 Wind is in mph, to convert to kph would require a switch. Not all countries that use metric (e.g C°) use kph!
 
+## Wanted Enhancements due to API Limitations
+### Local Time for Passed In Location
+The days of the week and dates do not update based off the city you searched. They are always based off the user's 
+timezone. OWM does not return the timezone for the location requested, nor is it's `dt` or `dt_txt` timezone adjusted, 
+they are always UTC.
+The only way to get the timezone would be to use a different API that can determine it based off of the location.
+
 ## Known Bugs
 - The regular expression governing the location input likely does not cover all
 input scenarios.
@@ -258,9 +265,6 @@ input scenarios.
 - `Locate Me` can fail. See: [Issue with OpenWeatherMap Latitude/Longitude Query](https://github.com/nuplex/five-day-weather#other-issues)
 - Valid latitude/longitude coordinates can fail. See: [Issue with OpenWeatherMap Latitude/Longitude Query](https://github.com/nuplex/five-day-weather#other-issues)
 - The loading icon will sometimes show it's `alt` spinning if the svg has not loaded yet.
-- The days of the week and dates do not update based off the city you searched. They are always based off the user's 
-timezone. Timezone issues can be complex to solve, so I left this for now. This would be simpler to solve if OWM returned
-the timezone for a city. It does not.
 
 ## Suspected Bugs
 - The OpenWeatherMap calculates the 'five days' based off of 40 three hour periods. It also only starts the periods from
@@ -270,7 +274,7 @@ the timezone for a city. It does not.
 ## Quirks
 - The closer you get to the end of the day, the closer the highs and lows get for `Today`. This is due to less data being 
 available. Some apps, like the Weather Channel, do not display highs after a certain time.
-- If you press `Locate Me` and the city name it gets back is not one on its list, and you press `Look Up!` without
+- If you press `Locate Me` and the city name it gets back is not one on OWM's list, and you press `Look Up!` without
 modifying the input field (which should have that city), you may get back an entirely different forecast for a different
 city of the same name. This is because `Locate Me` is based off the unique lat/long, where as city search is based off the city name
 and country code, which is not unique.
