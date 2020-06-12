@@ -15,8 +15,10 @@
   },
   "scripts": {
     "start": "npm-run-all -p start-js start-server",
+    "monstart": "npm-run-all -p start-js mon-start-server",
     "start-js": "react-scripts start",
-    "start-server": "nodemon server.js &",
+    "start-server": "node server.js &",
+    "mon-start-server": "nodemon server.js &",
     "postinstall": "npm run build",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
